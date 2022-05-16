@@ -7,15 +7,14 @@ import java.util.Scanner;
 
 public class Client {
 
-    private Socket socket = null;
+    private Socket socket;
     private  InputStreamReader isr = null;
     private  OutputStreamWriter osw = null;
     private BufferedReader br = null;
     private  BufferedWriter bw = null;
 
-    public void Client(String address) {
+    public void Client(String address, int port) {
        try {
-           int port = 25000;
            socket = new Socket(address, port);
            isr = new InputStreamReader(socket.getInputStream());
            osw = new OutputStreamWriter(socket.getOutputStream());
@@ -60,7 +59,7 @@ public class Client {
     }
 
     public static void main(String[] args) {
-        Client client = new Client("localhost", 25000);
+        Client client = new Client(new String[]{"localhost"}, 25000);
     }
 
 }
